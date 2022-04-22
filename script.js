@@ -1,14 +1,14 @@
-let dificult = 6;
+const dificult = 6;
 
 // DESCRIÇÃO DAS FUNÇÕES
 
 function confirmAnswer(event) {
-  const selectedColor = window.getComputedStyle(event.target, null).getPropertyValue('background-color');
+  const sColor = window.getComputedStyle(event.target, null).getPropertyValue('background-color');
   const colorRight = document.querySelector('#rgb-color').textContent;
   const answer = document.querySelector('#answer');
   const score = document.querySelector('#score');
-  let newScore = parseInt(score.textContent);
-  if (selectedColor === colorRight) {
+  let newScore = parseInt(score.textContent, 10);
+  if (sColor === colorRight) {
     answer.innerText = 'Acertou!';
     newScore += 3;
     score.textContent = newScore;
@@ -17,9 +17,13 @@ function confirmAnswer(event) {
   }
 }
 
+function rand() {
+  return Math.floor(Math.random() * 255);
+}
+
 function createBalls(num) {
   document.querySelector('#answer').innerText = 'Escolha uma cor';
-  const colorRight = Math.floor(Math.random() * 6, );
+  const colorRight = Math.floor(Math.random() * 6, 10);
   const content = document.querySelector('#content-ball');
   content.textContent = '';
   for (let i = 0; i < num; i += 1) {
@@ -34,10 +38,6 @@ function createBalls(num) {
       document.querySelector('#rgb-color').innerText = `${rgb}`;
     }
   }
-}
-
-function rand() {
-  return Math.floor(Math.random() * 255);
 }
 
 function callCreateBalls() {
