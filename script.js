@@ -1,34 +1,6 @@
+let dificult = 6;
+
 // DESCRIÇÃO DAS FUNÇÕES
-
-function createBalls(num) {
-  document.querySelector('#answer').innerText = 'Escolha uma cor';
-  const colorRight = Math.floor(Math.random() * 6 );
-  const content = document.querySelector('#content-ball');
-  content.textContent = '';
-  for (let i = 0; i < num; i += 1) {
-    const ball = document.createElement('div')
-    ball.className = 'ball';
-    content.appendChild(ball);
-    
-    function rand() {
-      return Math.floor(Math.random() * 255);
-    }
-    const color = `rgb(${rand()}, ${rand()}, ${rand()})`;
-    ball.style.backgroundColor = color;
-    // CHAMADA ESCUTADORES DE EVENTOS
-    ball.addEventListener('click', confirmAnswer);
-    
-    if (i === colorRight) {
-      const rgb = window.getComputedStyle(ball, null).getPropertyValue('background-color');
-      console.log(i+1, rgb);
-      document.querySelector('#rgb-color').innerText = `${rgb}`;
-    }
-  }  
-}
-
-function callCreateBalls() {
-  createBalls(dificult);
-}
 
 function confirmAnswer(event) {
   const selectedColor = window.getComputedStyle(event.target, null).getPropertyValue('background-color');
@@ -45,9 +17,34 @@ function confirmAnswer(event) {
   }
 }
 
-// CHAMADA CÓDIGO INICIAL:
+function createBalls(num) {
+  document.querySelector('#answer').innerText = 'Escolha uma cor';
+  const colorRight = Math.floor(Math.random() * 6, );
+  const content = document.querySelector('#content-ball');
+  content.textContent = '';
+  for (let i = 0; i < num; i += 1) {
+    const ball = document.createElement('div');
+    ball.className = 'ball';
+    content.appendChild(ball);
+    const color = `rgb(${rand()}, ${rand()}, ${rand()})`;
+    ball.style.backgroundColor = color;
+    ball.addEventListener('click', confirmAnswer); // CHAMADA ESCUTADORES DE EVENTOS
+    if (i === colorRight) {
+      const rgb = window.getComputedStyle(ball, null).getPropertyValue('background-color');
+      document.querySelector('#rgb-color').innerText = `${rgb}`;
+    }
+  }
+}
 
-let dificult = 6;
+function rand() {
+  return Math.floor(Math.random() * 255);
+}
+
+function callCreateBalls() {
+  createBalls(dificult);
+}
+
+// CHAMADA CÓDIGO INICIAL:
 
 createBalls(dificult);
 
