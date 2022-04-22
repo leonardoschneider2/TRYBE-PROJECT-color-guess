@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.ball {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(159, 54, 54);
+  border-radius: 50%;
+  display: inline-block;
+  margin: 10px;
+  border: 1px solid gray;
+}
